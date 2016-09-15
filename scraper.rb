@@ -90,7 +90,7 @@ POLICY_PAGES.each do |page_path|
     @logger.info(record.inspect)
 
     if (ScraperWiki.select("* from data where `id`='#{record['id']}'").empty? rescue true)
-      ScraperWiki.save_sqlite(['id', 'last_updated'], record)
+      ScraperWiki.save_sqlite(['id'], record)
       @logger.info("Stored #{record.inspect}")
     else
       puts "Skipping already saved record " + record['id']
